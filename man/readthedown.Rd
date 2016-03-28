@@ -6,7 +6,7 @@
 \usage{
 readthedown(fig_width = 8, fig_height = 5, fig_caption = TRUE,
   highlight = "kate", lightbox = FALSE, thumbnails = FALSE,
-  gallery = FALSE, css = "readthedown", pandoc_args = NULL, ...)
+  gallery = FALSE, readthecss = "readthedown", pandoc_args = NULL, ...)
 }
 \arguments{
 \item{fig_width}{Default width (in inches) for figures}
@@ -26,7 +26,7 @@ highlighting.}
 
 \item{gallery}{if TRUE and lightbox is TRUE, add a gallery navigation between images in lightbox display}
 
-\item{css}{stylesheet to use ("readthedown","readthedocs" [blue], "mikasa" [blue/yellow], or path to custom css file)}
+\item{readthecss}{stylesheet to use ("readthedown","readthedocs" [blue], "mikasa" [blue/yellow], or path to custom css file)}
 
 \item{pandoc_args}{arguments passed to the pandoc_args argument of rmarkdown \code{\link{html_document}}}
 

@@ -176,6 +176,7 @@ blockquote{
 }
 
 ul,ol,dl{
+    font-size:16px;
     line-height:24px;
     list-style-image:none;
     /* list-style:none; */
@@ -658,11 +659,11 @@ a {
     transition: background-position .15s, color .15s;
 }*/
 
-#content .section a:hover {
+/*#content .section a:hover {
     text-decoration: none;
     background-position: 0 0.3em;
     color: #ffffff;
-}
+}*/
 
 a:hover, a:active{
     outline:0;

@@ -13,7 +13,7 @@
 #' @param thumbnails if TRUE display content images as thumbnails
 #' @param gallery if TRUE and lightbox is TRUE, add a gallery navigation between images in lightbox display
 #' @param pandoc_args arguments passed to the pandoc_args argument of rmarkdown \code{\link{html_document}}
-#' @param css stylesheet to use ("readthedown","readthedocs" [blue], "mikasa" [blue/yellow], or path to custom css file)
+#' @param readthecss stylesheet to use ("readthedown","readthedocs" [blue], "mikasa" [blue/yellow], or path to custom css file)
 #' @param ... Additional function arguments passed to R Markdown \code{\link{html_document}}
 #' @return R Markdown output format to pass to \code{\link{render}}
 #' @import rmarkdown
@@ -28,7 +28,7 @@ readthedown <- function(fig_width = 8,
                        lightbox = FALSE,
                        thumbnails = FALSE,
                        gallery = FALSE,
-                       css = "readthedown", 
+                       readthecss = "readthedown", 
                        pandoc_args = NULL,
                        ...) {
  
@@ -36,7 +36,7 @@ readthedown <- function(fig_width = 8,
   extra_dependencies <- list(html_dependency_jquery(),
                              html_dependency_bootstrap(),
                              html_dependency_magnific_popup(),
-                             html_dependency_readthedown(css))
+                             html_dependency_readthedown(readthecss))
   
   ## Force mathjax arguments
   pandoc_args <- c(pandoc_args, 
@@ -76,5 +76,5 @@ html_dependency_readthedown <- function(css) {
                  version = "0.1",
                  src = system.file("templates/readthedown", package = "rmdformats"),
                  script = "readthedown.js",
-                 stylesheet = c(mycss))
+                 stylesheet = mycss)
 }
