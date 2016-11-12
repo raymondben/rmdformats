@@ -6,7 +6,8 @@
 \usage{
 readthedown(fig_width = 8, fig_height = 5, fig_caption = TRUE,
   highlight = "kate", lightbox = FALSE, thumbnails = FALSE,
-  gallery = FALSE, readthecss = "readthedown", pandoc_args = NULL, ...)
+  gallery = FALSE, readthecss = "readthedown", pandoc_args = NULL, toc_depth = 2,
+  use_bookdown = FALSE, ...)
 }
 \arguments{
 \item{fig_width}{Default width (in inches) for figures}
@@ -28,14 +29,23 @@ highlighting.}
 
 \item{readthecss}{stylesheet to use ("readthedown","readthedocs" [blue], "mikasa" [blue/yellow], or path to custom css file)}
 
-\item{pandoc_args}{arguments passed to the pandoc_args argument of rmarkdown \code{\link{html_document}}}
+\item{pandoc_args}{arguments passed to the pandoc_args argument of rmarkdown \code{\link[rmarkdown]{html_document}}}
 
-\item{...}{Additional function arguments passed to R Markdown \code{\link{html_document}}}
+\item{toc_depth}{adjust table of contents depth}
+
+\item{use_bookdown}{if TRUE, uses \code{\link[bookdown]{html_document2}} instead of \code{\link[rmarkdown]{html_document}}, thus providing numbered sections and cross references}
+
+\item{...}{Additional function arguments passed to R Markdown \code{\link[rmarkdown]{html_document}}}
 }
 \value{
-R Markdown output format to pass to \code{\link{render}}
+R Markdown output format to pass to \code{\link[rmarkdown]{render}}
 }
 \description{
 Format for converting from R Markdown to an HTML document.
+}
+\details{
+CSS adapted from the readtheorg theme of the org-html-themes project :
+\url{https://github.com/fniessen/org-html-themes}, which is itself inspired by
+the Read the docs theme : \url{https://readthedocs.org/}.
 }
 

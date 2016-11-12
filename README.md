@@ -2,7 +2,7 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/juba/rmdformats.svg?branch=master)](https://travis-ci.org/juba/rmdformats)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/rmdformats)](http://cran.r-project.org/package=rmdformats)
-![CRAN Downloads](http://cranlogs.r-pkg.org/badges/last-month/rmdformats) 
+![CRAN Downloads](http://cranlogs.r-pkg.org/badges/last-month/rmdformats)
 
 
 This R package provides ready-to-use HTML output formats and templates for
@@ -13,17 +13,30 @@ with or without the RStudio IDE.
 
 The package provides several HTML output formats. You can click on an image to see a real HTML output sample.
 
-### `readthedown` format 
+### `material` format
+
+Format taken from the [Material design theme for Bootstrap 3](https://github.com/FezVrasta/bootstrap-material-design). Document is split into pages at each `<h1>` header, and the table of contents allows an animated navigation between these pages.
+
+[![](resources/screenshots/material.png)](https://rawgit.com/juba/rmdformats/master/resources/examples/material/material.html)
+
+
+### `readthedown` format
+
+Adapted from the corresponding `readtheorg` theme of the [org-html-themes](https://github.com/fniessen/org-html-themes) project, fully responsive with dynamic table of contents and collapsible navigation.
 
 [![](resources/screenshots/readthedown.png)](https://rawgit.com/juba/rmdformats/master/resources/examples/readthedown/readthedown.html)
 
-### `html_clean` format 
+### `html_clean` format
+
+Simple and clean template with dynamic table of contents, very similar to the one from the great [knitrBootstrap package](https://github.com/jimhester/knitrBootstrap) by Jim
+Hester.
 
 [![](resources/screenshots/html_clean.png)](https://rawgit.com/juba/rmdformats/master/resources/examples/html_clean/html_clean_sample.html)
 
 
+### `html_docco` format
 
-### `html_docco` format 
+Simple template, no table of contents. CSS heavily inspired from the default one of the [docco](https://jashkenas.github.io/docco/) project.
 
 [![](resources/screenshots/html_docco.png)](https://rawgit.com/juba/rmdformats/master/resources/examples/html_docco/html_docco_sample.html)
 
@@ -35,6 +48,7 @@ Some extra features are available depending on the format :
 - `readthedown` is fully responsive, with collapsible navigation
 - `html_clean` and `readthedown` provide an automatic and dynamic table of contents
 - `html_clean` and `html_docco` provide automatic thumbnails for figures with lightbox display
+- code folding and tabsets are supported like in RStudio's HTML template
 
 The package also provides a `create.doc()` function as well as RStudio document
 templates to easily generate an empty and ready to use rmarkdown file with
@@ -112,11 +126,12 @@ make clean
 
 ## Credits
 
-- [Tocify](http://gregfranko.com/jquery.tocify.js/) for the dynamic javascript table of contents
 - [Magnific popup](http://dimsemenov.com/plugins/magnific-popup/) lightbox plugin
 - The code of `create.doc()` is heavily inspired by the `create.project()` function of the [ProjectTemplate package](http://projecttemplate.net/)
 - The CSS for the `html_docco` format is heavily inspired from the default one of the [docco](https://jashkenas.github.io/docco/) project.
 - The CSS and JavaScript for `readthedown` is adapted from the corresponding `readtheorg` theme of the [org-html-themes](https://github.com/fniessen/org-html-themes) project, which is itself inspired by the [Read the docs](https://readthedocs.org/) [Sphinx](http://sphinx-doc.org/) theme.
+- The CSS and JavaScript for `material` has been taken from the [Material design theme for Bootstrap 3](https://github.com/FezVrasta/bootstrap-material-design) project and its [presentation page](https://fezvrasta.github.io/bootstrap-material-design/)
+- JavaScript and HTML code for code folding and tabbed sections are taken from the RStudio's default `rmarkdown` HTML template
 
 The `html_clean` styling and features are very similar to the ones from the great
 [knitrBootstrap package](https://github.com/jimhester/knitrBootstrap) by Jim

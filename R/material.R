@@ -1,10 +1,10 @@
-#' Convert to an HTML document
+#' Material design - bootstrap HTML output format
 #'
-#' Format for converting from R Markdown to an HTML document.
+#' Format for converting from R Markdown to an HTML document with a material design theme.
 #'
 #' @details
-#' The CSS is heavily inspired from the default one of the docco project :
-#' \url{https://jashkenas.github.io/docco/}.
+#' JavaScript and CSS taken and adapted from the Material design theme
+#' for Bootstrap 3 project : \url{https://github.com/FezVrasta/bootstrap-material-design}.
 #'
 #' @param fig_width Default width (in inches) for figures
 #' @param fig_height Default width (in inches) for figures
@@ -18,17 +18,18 @@
 #' @param gallery if TRUE and lightbox is TRUE, add a gallery navigation between images in lightbox display
 #' @param pandoc_args arguments passed to the pandoc_args argument of rmarkdown \code{\link[rmarkdown]{html_document}}
 #' @param use_bookdown if TRUE, uses \code{\link[bookdown]{html_document2}} instead of \code{\link[rmarkdown]{html_document}}, thus providing numbered sections and cross references
-#' @param ... Additional function arguments passed to rmarkdown \code{\link[rmarkdown]{html_document}}
+#' @param ... Additional function arguments passed to R Markdown \code{\link[rmarkdown]{html_document}}
 #' @return R Markdown output format to pass to \code{\link[rmarkdown]{render}}
 #' @import rmarkdown
 #' @import bookdown
 #' @importFrom htmltools htmlDependency
 #' @export
 
-html_docco <- function(fig_width = 6,
+
+material <- function(fig_width = 6,
                        fig_height = 6,
                        fig_caption = TRUE,
-                       highlight = "pygments",
+                       highlight = "kate",
                        lightbox = TRUE,
                        thumbnails = TRUE,
                        gallery = FALSE,
@@ -41,7 +42,8 @@ html_docco <- function(fig_width = 6,
                              rmarkdown::html_dependency_jqueryui(),
                              html_dependency_bootstrap("bootstrap"),
                              html_dependency_magnific_popup(),
-                             html_dependency_docco())
+                             html_dependency_bootstrap_material(),
+                             html_dependency_material())
 
   ## Force mathjax arguments
   pandoc_args <- c(pandoc_args,
@@ -65,13 +67,15 @@ html_docco <- function(fig_width = 6,
 
   ## Call rmarkdown::html_document
   html_document_args <- list(
-    template = system.file("templates/html_docco/html_docco.html", package = "rmdformats"),
+    template = system.file("templates/material/material.html", package = "rmdformats"),
     extra_dependencies = extra_dependencies,
     fig_width = fig_width,
     fig_height = fig_height,
     fig_caption = fig_caption,
     highlight = highlight,
-    pandoc_args = pandoc_args
+    pandoc_args = pandoc_args,
+    toc = TRUE,
+    toc_depth = 1
   )
   html_document_args <- append(html_document_args, extra_args)
   if (use_bookdown) {
@@ -84,12 +88,22 @@ html_docco <- function(fig_width = 6,
 
 }
 
-
-# html_docco js and css
-html_dependency_docco <- function() {
-  htmltools::htmlDependency(name = "docco",
+# bootstrap material design js and css
+# https://github.com/FezVrasta/bootstrap-material-design
+html_dependency_bootstrap_material <- function() {
+  htmltools::htmlDependency(name = "bootstrap_material",
                  version = "0.1",
-                 src = system.file("templates/html_docco", package = "rmdformats"),
-                 script = "docco.js",
-                 stylesheet = "docco.css")
+                 src = system.file("templates/material/lib", package = "rmdformats"),
+                 script = c("material.min.js", "ripples.min.js"),
+                 stylesheet = c("bootstrap-material-design.min.css", "ripples.min.css"))
+}
+
+
+# material js and css
+html_dependency_material <- function() {
+  htmltools::htmlDependency(name = "material",
+                 version = "0.1",
+                 src = system.file("templates/material", package = "rmdformats"),
+                 script = "material.js",
+                 stylesheet = "material.css")
 }
